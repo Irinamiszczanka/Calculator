@@ -27,36 +27,36 @@ let result = '';
 
 
 function displayNumbers() {
-	if(this.textContent === "." && currentNumber.innerHTML.includes(".")) return;
+	if(this.textContent === '.' && currentNumber.innerHTML.includes('.')) return;
 
-	if(this.textContent === "."  && currentNumber.innerHTML === "" ) return currentNumber.innerHTML = ".0";
+	if(this.textContent === '.'  && currentNumber.innerHTML === '' ) return currentNumber.innerHTML = '.0'
 
 	currentNumber.innerHTML += this.textContent;
 }
 
 
 function operate() {
-	if(currentNumber.innerHTML === "" && this.textContent === "-") {
-		currentNumber.innerHTML = "-";
+	if(currentNumber.innerHTML === '' && this.textContent === '-') {
+		currentNumber.innerHTML = '-';
 		return;
 	}
 
 
-	else if(currentNumber.innerHTML === "") {
+	else if(currentNumber.innerHTML === '') {
 		return;
 	}
-	if(mathSign.innerHTML !== "") {
+	if(mathSign.innerHTML !== '') {
 		showResult();
 	}
 
 	previousNumber.innerHTML = currentNumber.innerHTML;
 	mathSign.innerHTML = this.textContent;
-	currentNumber.innerHTML = "";
+	currentNumber.innerHTML = '';
 }
 
 
 function showResult() {
-	if(previousNumber.innerHTML === "" || currentNumber.innerHTML === "") return;
+	if(previousNumber.innerHTML === '' || currentNumber.innerHTML === '') return;
 
 	let a = Number(currentNumber.innerHTML);
 	let b = Number(previousNumber.innerHTML);
@@ -93,6 +93,13 @@ function addToHistory() {
 	 calculatorHistory.appendChild(newHistoryItem);
 }
 
+function clearHistory() {
+	calculatorHistory.textContent = '';
+	if(calculatorHistory.textContent === '') {
+		historyBtn.classList.remove('active');
+	}
+}
+
 function clearScreen() {
 	result = '';
 	currentNumber.innerHTML = '';
@@ -100,12 +107,7 @@ function clearScreen() {
 	mathSign.innerHTML = '';
 }
 
-function clearHistory() {
-	calculatorHistory.textContent = '';
-	if(calculatorHistory.textContent = '') {
-		historyBtn.classList.remove('active');
-	}
-}
+
 
 
 
